@@ -1,0 +1,14 @@
+#floorName{
+    text-align: center;
+    font-style: italic;
+    color: white;
+}
+#containerId {
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+#addFloorForm {
+    margin-left: 400px;
+    margin-right: 350px;
+}

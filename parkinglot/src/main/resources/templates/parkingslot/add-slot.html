@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Add Slot</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+     <a class="navbar-brand" href="#">Navbar</a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+     </button>
+
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+         </ul>
+         <div class="navbar-centre" style="color: white; margin-right: 45%">
+             Parking Lot
+         </div>
+         <form class="form-inline my-2 my-lg-0">
+             <button sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 my-sm-0"
+                 type="submit">Logout</button>
+         </form>
+     </div>
+ </nav>
+ <div class="container" style="margin-top: 80px;">
+        <h3>Add Parking Slots</h3>
+        <hr>
+        <form action="#" th:action="@{/parkingslot/saveslot}"  th:object="${slot}" method="post">
+            <!-- Add hidden form field to handle the update -->
+            <input type="hidden" th:field="*{id}" />
+            <label>Slot Number</label>
+            <input type="number" placeholder="Spot Number" th:field="*{parkingSpotId}"
+                   class="form-control mb-4 col-4">
+            <label>Floor Number</label>
+            <input type="number" placeholder="Floor Number" th:field="*{parkingFloorId}"
+                   class="form-control mb-4 col-4">
+            <label>Vehicle Type</label>
+            <input type="text" placeholder="Vehicle Type" th:field="*{vehicleType}"
+                   class="form-control mb-4 col-4">
+            <label>Number of Available Spot</label>
+            <input type="number" placeholder="Number of Available Spot" th:field="*{availableCount}"
+                   class="form-control mb-4 col-4">
+            <div class="form-group blu-margin">
+                <select class="form-control" th:field="*{parkingType}" id="dropOperator">
+                    <option value="0">select operator</option>
+                    <option th:each="operator : ${parkingType}" th:value="${operator}" th:text="${operator}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-info col-2">Save</button>
+        </form>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</html>
